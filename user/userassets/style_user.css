@@ -1,0 +1,932 @@
+/* VisionDrive User Flow Styles
+   Light theme, mobile-first, based on mockup.pdf
+   -------------------------------------------------- */
+
+:root {
+  --bg-page: #ffffff;
+  --bg-card: #f8f9fb;
+  --bg-accent: #1b4dff;
+  --text-main: #0f172a;
+  --text-dim: #6b7280;
+  --border-soft: #d1d5db;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  --shadow-card: 0 16px 32px rgba(0,0,0,0.07);
+  --spacing: 16px;
+  --max-width: 1200px;
+  --transition-fast: 0.15s ease-in-out;
+  --danger: #dc2626;
+  --success: #10b981;
+  --full: #6b7280;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.vd-body {
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  line-height: 1.4;
+}
+
+/* ----------------- HEADER / NAV ----------------- */
+
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 10px var(--spacing);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+
+/* logo trái */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+}
+.brand-logo-full {
+  height: 42px;
+  width: auto;
+  display: block;
+}
+
+/* nav giữa */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+.nav-link {
+  color: var(--text-main);
+  font-weight: 600;          /* in đậm */
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+.nav-link:hover { background: var(--bg-card); color: var(--bg-accent); }
+
+/* user actions phải */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* avatar tròn nhỏ */
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: #e0e7ff;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+}
+
+/* Login / Logout button */
+.btn-auth {
+  padding: 7px 12px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  background: #fff;
+  transition: background var(--transition-fast);
+}
+.btn-auth:hover { background: var(--bg-card); }
+.btn-login { border-color: #d1d5db; }
+.btn-logout { border-color: #fecaca; color: #991b1b; }
+
+/* Book now button */
+.btn-book-now {
+  background: var(--bg-accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: background var(--transition-fast);
+}
+.btn-book-now:hover { background: #1539c4; }
+
+/* Responsive: ẩn bớt link ở màn nhỏ */
+@media (max-width: 900px) {
+  .main-nav .nav-link:nth-child(n+3) { display: none; } /* chỉ giữ Home, My course */
+}
+
+/* ----------------- HERO ----------------- */
+
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: stretch;
+}
+
+.hero-overlay {
+  flex: 1;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px var(--spacing);
+}
+
+.hero-content {
+  max-width: 500px;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #fff;
+}
+
+.hero-desc {
+  margin: 0 0 16px;
+  line-height: 1.5;
+  color: #e2e8f0;
+  font-size: 1rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--bg-accent);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  font-size: .95rem;
+  box-shadow: var(--shadow-card);
+}
+.hero-cta:hover {
+  background: #1539c4;
+}
+
+/* ----------------- INFO CARDS ----------------- */
+
+.info-cards {
+  max-width: var(--max-width);
+  margin: 32px auto;
+  padding: 0 var(--spacing);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.info-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.info-title {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.info-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+@media(min-width: 768px){
+  .info-cards {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+/* ----------------- CTA BLOCK ----------------- */
+
+.cta-block {
+  max-width: var(--max-width);
+  margin: 32px auto 48px;
+  text-align: center;
+  padding: 0 var(--spacing);
+}
+
+.cta-headline {
+  margin: 0 0 16px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-disabled {
+  display: inline-block;
+  font-weight: 600;
+  font-size: .95rem;
+  line-height: 1.2;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 14px;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--bg-accent);
+  color: #fff;
+  box-shadow: var(--shadow-card);
+}
+.btn-primary:hover {
+  background: #1539c4;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--text-main);
+  border: 1px solid var(--border-soft);
+}
+.btn-secondary:hover {
+  background: var(--bg-card);
+}
+
+.btn-disabled {
+  background: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+  border: 1px solid #9ca3af;
+}
+
+/* make full-width inside cards if needed */
+.stretch {
+  display: block;
+  width: 100%;
+}
+
+/* ----------------- STEP WRAPPER ----------------- */
+
+.step-wrapper {
+  max-width: 480px;
+  margin: 32px auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+
+.step-title {
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-align: center;
+}
+
+.step-hint {
+  text-align: center;
+  font-size: .9rem;
+  color: var(--text-dim);
+  margin: 0 0 24px;
+}
+
+.req {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ----------------- BOOKING TYPE CARDS ----------------- */
+
+.booking-type-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media(min-width:600px){
+  .booking-type-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.type-card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  padding: 16px;
+}
+
+.type-card.disabled {
+  opacity: .5;
+}
+
+.type-title {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.type-desc {
+  margin: 0 0 12px;
+  font-size: .9rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ----------------- FORM ----------------- */
+
+.vd-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media(min-width:600px){
+  .form-row-2col {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.vd-form input[type="text"],
+.vd-form input[type="email"],
+.vd-form input[type="file"],
+.vd-form select {
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: 10px 12px;
+  font-size: .95rem;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+
+.vd-form input[type="text"]:focus,
+.vd-form input[type="email"]:focus,
+.vd-form input[type="file"]:focus,
+.vd-form select:focus {
+  outline: 2px solid var(--bg-accent);
+  outline-offset: 0;
+  border-color: var(--bg-accent);
+}
+
+.input-error {
+  border-color: var(--danger) !important;
+  outline-color: var(--danger) !important;
+}
+
+.field-error {
+  color: var(--danger);
+  font-size: .8rem;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.form-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font-size: .9rem;
+  line-height: 1.4;
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: .8rem;
+  line-height: 1.3;
+}
+
+/* suggested campuses chips */
+
+.suggested-campus {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 16px;
+  margin-top: 8px;
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+.suggested-campus .label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  display: inline-block;
+  background: #fff;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  padding: 6px 10px;
+  font-size: .8rem;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+/* ----------------- CALENDAR / DATE PICK LIST ----------------- */
+
+.date-list-form {
+  display: grid;
+  gap: 16px;
+}
+
+.date-card {
+  display: block;
+  background: #fff;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  padding: 16px;
+  cursor: pointer;
+  position: relative;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+.date-card.full {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.date-card:hover {
+  border-color: var(--bg-accent);
+  box-shadow: 0 20px 40px rgba(27,77,255,0.15);
+}
+
+.date-card input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.date-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap:16px;
+  flex-wrap: wrap;
+}
+
+.date-card-date {
+  font-size: .95rem;
+  line-height: 1.4;
+  color: var(--text-main);
+}
+.date-big {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+.date-sub {
+  font-size: .8rem;
+  color: var(--text-dim);
+}
+.dur {
+  color: var(--text-dim);
+}
+
+.date-card-meta {
+  text-align: right;
+  font-size: .8rem;
+  font-weight: 600;
+}
+.tag-seat {
+  color: var(--success);
+}
+.tag-full {
+  color: var(--full);
+}
+
+.calendar-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* ----------------- SUCCESS PAGE ----------------- */
+
+.success-wrapper {
+  max-width: 480px;
+  margin: 32px auto;
+  padding: 0 var(--spacing);
+}
+
+.success-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  text-align: center;
+  border: 1px solid var(--border-soft);
+}
+
+.success-title {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.success-msg {
+  font-size: .95rem;
+  line-height: 1.4;
+  color: var(--text-dim);
+  margin: 0 0 16px;
+}
+
+/* ----------------- FOOTER (FIXED & LOGO) ----------------- */
+
+.site-footer {
+  border-top: 1px solid var(--border-soft);
+  background: #fff;
+  font-size: .85rem;
+  color: var(--text-dim);
+}
+
+/* Luôn dính đáy + kích thước cố định (không quá hẹp) */
+.fixed-footer {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 40;
+  background: #fff;
+  border-top: 1px solid var(--border-soft);
+  box-shadow: 0 -6px 18px rgba(0,0,0,0.06);
+  height: 120px;                /* chiều cao cố định (đủ thoáng cho logo + links + copy) */
+  padding-bottom: env(safe-area-inset-bottom);   /* tránh lẹm trên mobile */
+}
+
+/* Bên trong chiếm trọn chiều cao để canh giữa đẹp, GIỮ nguyên bố cục */
+.site-footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: calc(100% - env(safe-area-inset-bottom));
+  padding: 12px var(--spacing);
+  display: grid;
+  justify-items: center;         /* logo + links + copy ở giữa */
+  align-content: center;         /* canh giữa theo trục dọc */
+  gap: 6px;                      /* khoảng cách giữa các hàng */
+  text-align: center;
+}
+
+/* Logo ở giữa (trên dãy Policy) */
+.footer-brand,
+.footer-brand:focus,
+.footer-brand:hover {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-bottom: 2px;
+}
+.footer-logo {
+  height: 30px;                  /* chỉnh 28–36px nếu cần */
+  width: auto;
+  display: inline-block;
+}
+
+/* Links & copy */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 14px;
+}
+.footer-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+.footer-links a:hover { background: var(--bg-card); }
+
+.footer-copy {
+  color: var(--text-dim);
+  line-height:1.4;
+  font-size: .8rem;
+  white-space: nowrap;
+}
+
+/* Giới hạn tràn khi màn hình siêu nhỏ để không đội chiều cao footer */
+@media (max-width: 360px) {
+  .footer-copy { white-space: normal; }
+}
+
+/* ----------------- PAGE WRAPPER SPACING ----------------- */
+/* chừa chỗ cho footer fixed – chống “nhảy” kể cả khi trang rất ít nội dung */
+body.vd-body::after{
+  content:"";
+  display:block;
+  height: calc(120px + env(safe-area-inset-bottom)); /* khớp với height .fixed-footer */
+}
+
+/* Không dùng padding-bottom để tránh đúp khoảng trống */
+.page-content {
+  display: block;
+  padding-bottom: 0 !important;
+}
+
+/* ==========================================================
+   CALENDAR MONTH VIEW (square-ish layout, user/calendar.php)
+   ========================================================== */
+
+.month-head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.month-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Outer form wrapper for the calendar step */
+.calendar-form {
+  display: block;
+}
+
+/* Calendar grid:
+   - 7 columns (Su → Sa)
+   - bordered white card with subtle shadow
+*/
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  font-size: 0.8rem;
+}
+
+/* Day-of-week header cells (Su, Mo, ... Sa) */
+.calendar-dow {
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-weight: 600;
+  text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid var(--border-soft);
+  border-right: 1px solid var(--border-soft);
+  line-height: 1.2;
+}
+.calendar-dow:nth-child(7n) { border-right: 0; }
+
+/* Individual day cells */
+.calendar-cell {
+  min-height: 110px;
+  max-height: 110px;
+  background: #fff;
+  border-right: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 6px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.calendar-cell.empty {
+  background: #f9fafb;
+  color: var(--text-dim);
+}
+
+.calendar-cell:nth-child(7n) { border-right: 0; }
+
+/* Day number */
+.cal-daynum {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+/* Slots container */
+.cal-slots {
+  display: grid;
+  gap: 4px;
+  overflow-y: hidden;
+  max-height: 80px;
+}
+
+/* No-class label */
+.cal-no-slot {
+  flex: 1;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.2;
+}
+
+/* Slot line */
+.slot-line {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 4px 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+  font-size: 0.7rem;
+  line-height: 1.2;
+  max-height: 48px;
+  overflow: hidden;
+}
+.slot-line.full { opacity: 0.5; cursor: not-allowed; }
+.slot-line:hover {
+  border-color: var(--bg-accent);
+  box-shadow: 0 10px 20px rgba(27,77,255,0.12);
+}
+
+/* Radio button */
+.slot-line input[type="radio"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Slot text */
+.slot-info { flex: 1; min-width: 0; overflow: hidden; }
+.slot-top {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.slot-meta {
+  font-size: 0.7rem;
+  line-height: 1.2;
+  color: var(--text-dim);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* Badges */
+.tag-seat { color: var(--success); font-weight: 600; }
+.tag-full { color: var(--full); font-weight: 600; }
+
+/* Navigation under the calendar */
+.calendar-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* ==========================================================
+   CALENDAR LAYOUT WIDTH / RESPONSIVE
+   ========================================================== */
+
+.calendar-step {
+  max-width: 100%;
+  margin: 32px auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  border: 1px solid var(--border-soft);
+}
+
+@media (min-width: 600px) { .calendar-step { max-width: 640px; } }
+@media (min-width: 768px) { .calendar-step { max-width: 800px; } }
+@media (min-width: 1024px){
+  .calendar-step { max-width: 900px; }
+  .calendar-grid { font-size: 0.85rem; }
+  .cal-daynum { font-size: 0.85rem; }
+  .slot-top, .slot-meta { font-size: 0.75rem; }
+}
+
+/* ==========================================
+   Calendar toolbar (month navigation)
+========================================== */
+.calendar-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 12px 16px;
+}
+
+.cal-nav-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.2;
+  text-decoration: none;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+.cal-nav-btn:hover {
+  border-color: var(--bg-accent);
+  box-shadow: 0 12px 24px rgba(27,77,255,0.12);
+}
+
+.cal-current {
+  flex: 1;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.2;
+  min-width: 140px;
+}
+
+.cal-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cal-picker input[type="month"] {
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+
+/* Accessibility helper for screen-reader labels */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
+}

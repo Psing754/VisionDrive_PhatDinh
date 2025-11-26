@@ -1,0 +1,251 @@
+/* ==========================================================
+   VisionDrive Admin Panel — Layout & Theme (Light-first)
+   ========================================================== */
+
+:root {
+  --bg-dark: #0b0f16;
+  --panel: #121826;
+  --panel-2: #182235;
+  --border: #22314a;
+  --text: #e7eefc;
+  --muted: #9fb2d4;
+  --brand: #4f7cff;
+  --green: #3ccf91;
+  --amber: #f5b942;
+  --red: #ff6b6b;
+  --gray: #7a8aaa;
+  --radius: 14px;
+  --shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+}
+
+/* ===== Layout ===== */
+.layout {
+  display: flex;
+  flex-direction: row;   /* <— quan trọng */
+  min-height: 100vh;}
+.sidebar {
+  width: 240px; background: var(--panel); border-right: 1px solid var(--border);
+  padding: 20px 16px; position: sticky; top: 0; height: 100vh;
+}
+.main {
+  flex: 1;
+  min-width: 0;          /* tránh tràn gây đẩy layout */
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-dark);
+}
+
+/* ===== Sidebar / Navigation ===== */
+.brand { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+.brand .badge {
+  margin-left: 6px; background: var(--panel-2); border: 1px solid var(--border);
+  border-radius: 999px; padding: 2px 8px; font-size: 12px; color: var(--muted);
+}
+.menu { display: flex; flex-direction: column; gap: 6px; }
+.menu a { text-decoration: none; color: var(--text); padding: 10px 12px; border-radius: 10px; }
+.menu a:hover { background: var(--panel-2); }
+.menu a.active { background: var(--brand); color: #fff; }
+
+/* ===== Topbar ===== */
+.topbar {
+  display: flex; align-items: center; gap: 12px; padding: 12px 20px;
+  background: var(--panel); border-bottom: 1px solid var(--border);
+}
+.topbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.divider { width: 1px; height: 24px; background: var(--border); }
+.user {
+  background: var(--panel-2); border: 1px solid var(--border); border-radius: 999px; padding: 6px 10px;
+}
+
+/* ===== Page header (white) ===== */
+.page-header {
+  padding: 20px; border-bottom: 1px solid #e2e8f0; background: #fff; color: #0f172a;
+}
+.breadcrumb { color: #475569; font-size: 13px; margin-bottom: 4px; }
+.page-title { font-size: 22px; font-weight: 600; margin: 0; }
+
+/* ===== Content (white) ===== */
+.content { flex: 1; padding: 20px; background: #fff; color: #0f172a; }
+
+/* ===== Cards ===== */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.card { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 18px; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+.card-label { font-size: 13px; color: #475569; }
+.card-value { font-size: 30px; font-weight: 700; margin-top: 6px; color:#0f172a; }
+
+/* ===== Sections ===== */
+.section { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 16px; }
+.section-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.section-actions { display: flex; gap: 8px; }
+
+/* ===== Buttons ===== */
+.btn {
+  background: #f8fafc; border: 1px solid #e2e8f0; color: #0f172a;
+  padding: 8px 12px; border-radius: 10px; cursor: pointer; position: relative; overflow: hidden;
+}
+.btn.primary { background: var(--brand); border: none; color: #fff; }
+.btn.ghost { background: transparent; border: 1px solid #e2e8f0; color:#0f172a; }
+.btn:hover { filter: brightness(1.08); }
+
+/* ===== Tables ===== */
+.table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid #e2e8f0; background:#fff; }
+.table { width: 100%; min-width: 780px; border-collapse: collapse; background:#fff; }
+.table th, .table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #eef2f7; white-space: nowrap; color:#0f172a; }
+.table thead th { background: #f8fafc; position: sticky; top: 0; color:#0f172a; border-bottom:1px solid #e2e8f0; }
+.actions-col { width: 130px; }
+tr.selected { background: rgba(79,124,255,0.10); }
+
+/* ===== Badges ===== */
+.badge { display: inline-block; padding: 3px 8px; border-radius: 999px; font-size: 12px; border: 1px solid transparent; text-transform: lowercase; font-weight:700; }
+.badge.success { background: rgba(60,207,145,.45); color: #0a2e17; border-color: rgba(60,207,145,.90); }
+.badge.warn    { background: rgba(245,185,66,.44); color: #3b2900; border-color: rgba(245,185,66,.90); }
+.badge.gray    { background: rgba(122,138,170,.38); color: #0f172a; border-color: rgba(122,138,170,.85); }
+.badge.dark    { background:#1a263a; color:#e7eefc; border-color:#22314a; }
+.badge.blue    { background: rgba(79,124,255,.42); color: #0a1130; border-color: rgba(79,124,255,.90); }
+
+/* ===== Toolbar / Inputs ===== */
+.toolbar { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.input { background: #f8fafc; border: 1px solid #e2e8f0; color: #0f172a; padding: 10px 12px; border-radius: 10px; min-width: 260px; }
+.spacer { flex: 1; }
+
+/* ===== Links in actions (buttons style) ===== */
+.table .row-actions a.link,
+.row-actions a.link{
+  display:inline-flex;align-items:center;padding:.28rem .60rem;border-radius:.5rem;
+  font-weight:700;line-height:1.1;border:1px solid transparent;text-decoration:none!important;color:#fff!important;
+}
+.table .row-actions a.link:not(.danger),
+.row-actions a.link:not(.danger){ background-color: var(--brand)!important; box-shadow: inset 0 0 0 999px rgba(0,0,0,.12); }
+.table .row-actions a.link.danger,
+.row-actions a.link.danger{ background-color: var(--red)!important; box-shadow: inset 0 0 0 999px rgba(0,0,0,.14); }
+.table .row-actions .link + .link{ margin-left:.4rem; }
+
+/* ===== Footer ===== */
+.footer { padding: 14px 20px; border-top: 1px solid #e2e8f0; background: #fff; color: #475569; margin-top: auto; }
+
+/* ===== Light Theme Toggle ===== */
+body.light{
+  --bg-dark: #f5f7fb; --panel: #ffffff; --panel-2: #f2f5fb; --border: #dbe1f0;
+  --text: #0f172a; --muted: #475569; --brand: #2563eb; --green: #10b981; --amber: #f59e0b; --red: #ef4444; --gray: #94a3b8;
+  background: var(--bg-dark); color: var(--text);
+}
+body.light .menu a.active{ color:#fff; }
+body.light .footer{ background:#fff; color:#475569; }
+body.light .table thead th{ background:#eef2ff; }
+body.light .table-wrap{ border-color:#e2e8f0; }
+body.light .card,
+body.light .section,
+body.light .topbar,
+body.light .sidebar{ background:#fff; border-color:#e2e8f0; }
+body.light .input,
+body.light .user{ background:#f8fafc; border-color:#e2e8f0; color:#0f172a; }
+body.light .badge.dark{ background:#1f2937; color:#fff; border-color:#111827; }
+
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .sidebar { position: fixed; left: -240px; transition: left 0.3s; z-index: 10; }
+  .sidebar.show { left: 0; }
+  .cards { grid-template-columns: 1fr; }
+  .input { width: 100%; min-width: 0; }
+}
+.btn-logout{
+  background-color: var(--red) !important;
+  color: #fff !important;
+  font-weight: 800;
+  border: 1px solid transparent !important;
+}
+/* Bulk inline (hiển thị trong toolbar/section-head) */
+.bulk-inline{display:none;align-items:center;gap:10px}
+.bulk-inline.show{display:flex}
+.bulk-inline[hidden]{display:none!important}
+.bulk-inline .bulk-count{
+  font-weight:700;background:#eef2ff;color:#1e40af;
+  border:1px solid #e2e8f0;border-radius:10px;padding:6px 10px;font-size:12px
+}
+/* ==== Hamburger visibility ==== */
+.btn-toggle { display: none; }              /* hidden by default on large screens */
+@media (max-width:1024px){
+  .btn-toggle { display: inline-flex; align-items:center; justify-content:center; }
+}
+/* on desktop when collapsed -> show the button so user can expand back */
+body.sidebar-collapsed .btn-toggle { display: inline-flex; }
+
+/* ==== Desktop collapsed behavior ==== */
+body.sidebar-collapsed .sidebar { width: 72px; transition: width .25s ease; }
+.menu a { display:flex; align-items:center; gap:10px; }
+.menu a .icon { width:24px; flex:0 0 24px; text-align:center; }
+.menu a .text { white-space:nowrap; }
+body.sidebar-collapsed .menu a .text { display:none; } /* keep icons clickable */
+
+/* ==== Mobile / tablet off-canvas ==== */
+/* support both .open (new) and .show (legacy) */
+@media (max-width:1024px){
+  .sidebar {
+    position: fixed; top:0; left:-260px; height:100%;
+    transition:left .25s ease; z-index:1000;
+  }
+  .sidebar.open, .sidebar.show { left:0; }
+
+  .sidebar-backdrop {
+    content:""; position:fixed; inset:0; background:rgba(0,0,0,.35);
+    display:none; z-index:900;
+  }
+  /* When open/show, show backdrop */
+  .sidebar.open + .sidebar-backdrop,
+  .sidebar.show + .sidebar-backdrop { display:block; }
+}
+
+/* Prevent long text overflow in tables (optional quality-of-life) */
+.table td { word-break: break-word; overflow-wrap: anywhere; }
+/* Logout button: no underline, no focus ring, no shadow (all pages) */
+.btn-logout,
+.btn-logout:hover,
+.btn-logout:focus,
+.btn-logout:active,
+.btn-logout:focus-visible {
+  text-decoration: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+/* Mobile tap highlight (optional) */
+.btn-logout {
+  -webkit-tap-highlight-color: transparent;
+}
+/* Trạng thái màu CHUẨN */
+.ev-state-next  { background: #10b981 !important; color: #0b1f16 !important; } /* Xanh lá = SẼ diễn ra */
+.ev-state-today { background: #f59e0b !important; color: #111827 !important; } /* Vàng = ĐANG diễn ra */
+.ev-state-past  { background: #ef4444 !important; color: #ffffff !important; } /* Đỏ = ĐÃ qua */
+
+/* ==== User avatar (hình tròn + chữ cái đầu nhạt) ==== */
+.user-avatar{
+  display:inline-flex; align-items:center; justify-content:center;
+  text-decoration:none; margin-left:4px;
+}
+.user-avatar .avatar{
+  width: 36px; height: 36px; border-radius: 50%;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-weight: 800; letter-spacing:.2px; text-transform:uppercase;
+  background: var(--brand);
+  color: rgba(255,255,255,.88);          /* chữ hơi nhạt */
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
+  user-select: none;
+  transition: transform .12s ease, filter .12s ease;
+  line-height: 1;
+}
+.user-avatar:hover .avatar{ transform: scale(1.03); filter: brightness(1.05); }
+
+/* Nếu trước đây .user có nền pill, tránh đè style avatar */
+.topbar .user { background: transparent; border: 0; padding: 0; }
+
